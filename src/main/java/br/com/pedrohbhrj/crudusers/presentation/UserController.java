@@ -43,6 +43,9 @@ public class UserController {
         deleteUserByIdUseCase.deleteUserById(id);
         return ResponseEntity.noContent().build();
     }
-
+    @PostMapping
+    public ResponseEntity<?> createUser(@RequestBody User user){
+        return ResponseEntity.status(HttpStatus.CREATED).body(createUserUseCase.createUser(user));
+    }
 
 }

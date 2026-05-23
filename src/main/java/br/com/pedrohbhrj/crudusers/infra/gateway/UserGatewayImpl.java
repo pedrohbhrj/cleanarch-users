@@ -82,10 +82,33 @@ public class UserGatewayImpl implements UserGateway {
     }
 
     @Override
+    @Transactional
     public void deleteById(Long id) {
         if (!userRepository.existsById(id)) {
             throw new EntityNotFoundException("Entity not found.");
         }
         userRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public User update(Long id, User user) {
+
+        UserEntity userEntity = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Entity not found."));
+
+        userEntity.setEmail(user.getEmail());
+        userEntity.setCpf(user.getCpf());
+        userEntity.setTelephone(user.getTelephone());
+        userEntity.setFirstName(user.getFirstName());
+        userEntity.setLastName(user.getLastName());
+        userEntity.setBirthDayDate(user.getBirthDayDate());
+
+        return new User(userEntity.getId(),
+                userEntity.getFirstName(),
+                userEntity.getLastName(),
+                userEntity.getEmail(),
+                userEntity.getCpf(),
+                userEntity.getBirthDayDate(),
+                userEntity.getTelephone());
     }
 }

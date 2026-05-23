@@ -2,14 +2,8 @@ package br.com.pedrohbhrj.crudusers.infra.config;
 
 
 import br.com.pedrohbhrj.crudusers.core.gateway.UserGateway;
-import br.com.pedrohbhrj.crudusers.core.usecases.impl.CreateUserUseCaseImpl;
-import br.com.pedrohbhrj.crudusers.core.usecases.impl.DeleteUserByIdUseCaseImpl;
-import br.com.pedrohbhrj.crudusers.core.usecases.impl.FindAllUsersUseCaseImpl;
-import br.com.pedrohbhrj.crudusers.core.usecases.impl.FindUserByIdUseCaseImpl;
-import br.com.pedrohbhrj.crudusers.core.usecases.interf.CreateUserUseCase;
-import br.com.pedrohbhrj.crudusers.core.usecases.interf.DeleteUserByIdUseCase;
-import br.com.pedrohbhrj.crudusers.core.usecases.interf.FindAllUsersUseCase;
-import br.com.pedrohbhrj.crudusers.core.usecases.interf.FindUserByIdUseCase;
+import br.com.pedrohbhrj.crudusers.core.usecases.impl.*;
+import br.com.pedrohbhrj.crudusers.core.usecases.interf.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -38,6 +32,11 @@ public class UseCasesConfiguration {
     @Bean
     public DeleteUserByIdUseCase deleteUserByIdUseCase(){
         return new DeleteUserByIdUseCaseImpl(userGateway);
+    }
+
+    @Bean
+    public UpdateUserUseCase updateUserUseCase(){
+        return new UpdateUserUseCaseImpl(userGateway);
     }
 
 
