@@ -14,18 +14,6 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
 
     @Override
     public User createUser(User user) {
-
-        User created = new User();
-
-        created.setId(user.getId());
-        created.setCpf(user.getCpf());
-        created.setEmail(user.getEmail());
-        created.setBirthDayDate(user.getBirthDayDate());
-        created.setTelephone(user.getTelephone());
-        created.setFirstName(user.getFirstName());
-        created.setLastName(user.getLastName());
-        created.setId(user.getId());
-
-        return userGateway.save(created);
+        return userGateway.save(user);
     }
 }
