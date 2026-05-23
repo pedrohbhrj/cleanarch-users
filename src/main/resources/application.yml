@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: clean-arch-users
+  datasource:
+    url: jdbc:postgresql://localhost:5440/users
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: info
