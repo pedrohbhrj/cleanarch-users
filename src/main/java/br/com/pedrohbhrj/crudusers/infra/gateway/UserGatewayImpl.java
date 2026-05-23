@@ -30,9 +30,19 @@ public class UserGatewayImpl implements UserGateway {
         userEntity.setFirstName(user.getFirstName());
         userEntity.setLastName(user.getLastName());
         userEntity.setEmail(user.getEmail());
-        userRepository.save(userEntity);
 
-        return user;
+        UserEntity userSaved = userRepository.save(userEntity);
+
+
+        return new User(
+                userSaved.getId(),
+                userEntity.getFirstName(),
+                userEntity.getLastName(),
+                userEntity.getEmail(),
+                userEntity.getCpf(),
+                userEntity.getBirthDayDate(),
+                userEntity.getTelephone()
+        );
     }
 
     @Override

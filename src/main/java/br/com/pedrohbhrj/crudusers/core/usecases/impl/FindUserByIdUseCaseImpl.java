@@ -3,7 +3,6 @@ package br.com.pedrohbhrj.crudusers.core.usecases.impl;
 import br.com.pedrohbhrj.crudusers.core.domain.User;
 import br.com.pedrohbhrj.crudusers.core.gateway.UserGateway;
 import br.com.pedrohbhrj.crudusers.core.usecases.interf.FindUserByIdUseCase;
-import jakarta.persistence.EntityNotFoundException;
 
 public class FindUserByIdUseCaseImpl implements FindUserByIdUseCase {
 

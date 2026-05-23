@@ -3,6 +3,7 @@ package br.com.pedrohbhrj.crudusers.core.domain;
 import org.apache.logging.log4j.util.Strings;
 
 import java.time.LocalDate;
+
 public class User {
 
     private Long id;
@@ -14,16 +15,16 @@ public class User {
     private String telephone;
 
     public User(Long id, String firstName, String lastName, String email, String cpf, LocalDate birthDayDate, String telephone) {
-        if(Strings.isEmpty(firstName) || Strings.isEmpty(lastName)){
+        if (Strings.isEmpty(firstName) || Strings.isEmpty(lastName)) {
             throw new IllegalArgumentException("First name and last name must have values");
         }
-        if(id == null){
+        if (id == null) {
             throw new IllegalArgumentException("Id must not be null");
         }
-        if(!validateCpf(cpf)){
+        if (!validateCpf(cpf)) {
             throw new IllegalArgumentException("Cpf inválid");
         }
-        if(birthDayDate.isBefore(LocalDate.now())){
+        if (birthDayDate.isAfter(LocalDate.now())) {
             throw new IllegalArgumentException("You cant born in the future.");
         }
         this.id = id;
@@ -35,63 +36,35 @@ public class User {
         this.telephone = telephone;
     }
 
-    public User() {
-    }
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getCpf() {
         return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public LocalDate getBirthDayDate() {
         return birthDayDate;
     }
 
-    public void setBirthDayDate(LocalDate birthDayDate) {
-        this.birthDayDate = birthDayDate;
-    }
-
     public String getTelephone() {
         return telephone;
-    }
-
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
     }
 
 
@@ -113,7 +86,7 @@ public class User {
             }
             int digito1 = 11 - (sum % 11);
             if (digito1 > 9) digito1 = 0;
-            
+
             sum = 0;
             weight = 11;
             for (int i = 0; i < 10; i++) {
