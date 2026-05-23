@@ -20,8 +20,11 @@ public class User {
         if(id == null){
             throw new IllegalArgumentException("Id must not be null");
         }
-        if(!validateCpf(cpf) || cpf.length() != 14){
+        if(!validateCpf(cpf)){
             throw new IllegalArgumentException("Cpf inválid");
+        }
+        if(birthDayDate.isBefore(LocalDate.now())){
+            throw new IllegalArgumentException("You cant born in the future.");
         }
         this.id = id;
         this.firstName = firstName;

@@ -5,8 +5,6 @@ import br.com.pedrohbhrj.crudusers.core.gateway.UserGateway;
 import br.com.pedrohbhrj.crudusers.core.usecases.interf.FindUserByIdUseCase;
 import jakarta.persistence.EntityNotFoundException;
 
-import java.util.Optional;
-
 public class FindUserByIdUseCaseImpl implements FindUserByIdUseCase {
 
     private final UserGateway userGateway;
@@ -17,6 +15,6 @@ public class FindUserByIdUseCaseImpl implements FindUserByIdUseCase {
 
     @Override
     public User findUserById(Long id) {
-        return userGateway.findById(id).orElseThrow(() -> new EntityNotFoundException("Entity not found."));
+        return userGateway.findById(id);
     }
 }

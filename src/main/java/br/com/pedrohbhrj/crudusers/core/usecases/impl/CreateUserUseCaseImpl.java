@@ -16,7 +16,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     public User createUser(User user) {
 
         User created = new User();
-
+        created.setId(user.getId());
         created.setCpf(user.getCpf());
         created.setEmail(user.getEmail());
         created.setBirthDayDate(user.getBirthDayDate());

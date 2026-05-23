@@ -14,12 +14,6 @@ public class DeleteUserByIdUseCaseImpl implements DeleteUserByIdUseCase {
 
     @Override
     public void deleteUserById(Long id) {
-
-        if(!userGateway.existsById(id)){
-            throw new EntityNotFoundException("Entity not found.");
-        }
-
         userGateway.deleteById(id);
-
     }
 }
